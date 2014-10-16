@@ -49,6 +49,7 @@ stdenv.mkDerivation {
   patches = patchesCross false;
 
   buildInputs = stdenv.lib.optional withCryptodev cryptodevHeaders;
+  outputs = [ "out" "misc" ];
 
   nativeBuildInputs = [ perl ];
 
@@ -79,6 +80,10 @@ stdenv.mkDerivation {
       if [ -n "$(echo $out/lib/*.so $out/lib/*.dylib)" ]; then
           rm $out/lib/*.a
       fi
+
+      mkdir $misc
+      mv $out/etc/ssl/misc $misc/
+      ln -s $misc $out/etc/ssl/misc
     ''; # */
 
   crossAttrs = {
