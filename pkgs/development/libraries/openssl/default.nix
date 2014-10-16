@@ -50,6 +50,7 @@ stdenv.mkDerivation {
 
   buildInputs = stdenv.lib.optional withCryptodev cryptodevHeaders;
   outputs = [ "out" "misc" ];
+  setOutputConfigureFlags = false;
 
   nativeBuildInputs = [ perl ];
 
@@ -81,9 +82,9 @@ stdenv.mkDerivation {
           rm $out/lib/*.a
       fi
 
-      mkdir $misc
+      mkdir -p $misc/bin
       mv $out/etc/ssl/misc $misc/
-      ln -s $misc $out/etc/ssl/misc
+      mv $out/bin/c_rehash $misc/bin/
     ''; # */
 
   crossAttrs = {
