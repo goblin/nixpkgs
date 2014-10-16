@@ -299,6 +299,20 @@ stripDirs() {
     done
 }
 
+# PaX-mark binaries
+paxmark() {
+    local flags="$1"
+    shift
+
+    if [ -z "@needsPax@" ]; then
+        return
+    fi
+
+    paxctl -c "$@"
+    paxctl -zex -${flags} "$@"
+}
+
+
 
 ######################################################################
 # Textual substitution functions.
