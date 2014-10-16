@@ -15,6 +15,7 @@ stdenv.mkDerivation (rec {
     url = "ftp://xmlsoft.org/libxml2/${name}.tar.gz";
     sha256 = "1nqgd1qqmg0cg09mch78m2ac9klj9n87blilx4kymi7jcv5n8g7x";
   };
+  outputs = [ "out" "config" ];
 
   buildInputs = stdenv.lib.optional pythonSupport python
     # Libxml2 has an optional dependency on liblzma.  However, on impure
@@ -29,6 +30,11 @@ stdenv.mkDerivation (rec {
   passthru = { inherit pythonSupport version; };
 
   enableParallelBuilding = true;
+
+  postInstall = ''
+	mkdir -p $config/bin/
+	mv $out/bin/xml2-config $config/bin/
+  '';
 
   meta = {
     homepage = http://xmlsoft.org/;
