@@ -268,7 +268,7 @@ rec {
     inherit (stage4.stdenv) fetchurlBoot;
 
     extraAttrs = {
-      inherit (stage4.pkgs) glibc;
+      inherit (stage4.pkgs) glibc.all;
       inherit platform bootstrapTools;
       shellPackage = stage4.pkgs.bash;
     };
@@ -277,7 +277,7 @@ rec {
       inherit gcc;
       inherit (stage4.pkgs)
         gzip bzip2 xz bash binutils coreutils diffutils findutils gawk
-        glibc gnumake gnused gnutar gnugrep gnupatch patchelf
+        glibc.all gnumake gnused gnutar gnugrep gnupatch patchelf
         attr acl paxctl zlib;
     };
   };
