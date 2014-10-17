@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, perl
+{ stdenv, fetchurl, perl, glibc
 , withCryptodev ? false, cryptodevHeaders }:
 
 let
@@ -48,7 +48,7 @@ stdenv.mkDerivation {
 
   patches = patchesCross false;
 
-  buildInputs = stdenv.lib.optional withCryptodev cryptodevHeaders;
+  buildInputs = glibc.all ++ stdenv.lib.optional withCryptodev cryptodevHeaders;
   outputs = [ "out" "misc" ];
   setOutputConfigureFlags = false;
 

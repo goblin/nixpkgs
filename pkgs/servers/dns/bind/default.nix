@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, openssl, libtool, perl, libxml2 }:
+{ stdenv, fetchurl, openssl, libtool, perl, libxml2, glibc }:
 
 let version = "9.9.5-W1"; in
 
@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
     sed -i 's/^\t.*run/\t/' Makefile.in
   '';
 
-  buildInputs = [ openssl.all libtool perl libxml2.all ];
+  buildInputs = [ openssl.all libtool perl libxml2.all glibc.all ];
 
   outputs = [ "out" "config" ];
 
