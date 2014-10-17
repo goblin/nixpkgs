@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, m4, cxx ? true, withStatic ? false }:
+{ stdenv, fetchurl, m4, glibc, cxx ? true, withStatic ? false }:
 
 with { inherit (stdenv.lib) optional; };
 
@@ -10,6 +10,7 @@ stdenv.mkDerivation (rec {
     sha256 = "0q5i39pxrasgn9qdxzpfbwhh11ph80p57x6hf48m74261d97j83m";
   };
 
+  buildInputs = glibc.all;
   nativeBuildInputs = [ m4 ];
 
   configureFlags =
