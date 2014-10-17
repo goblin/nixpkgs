@@ -41,6 +41,7 @@ in
     '';
     
     postInstall = ''
+      mkdir $include
       mv $out/include $include/
     '';
 
