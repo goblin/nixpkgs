@@ -24,6 +24,7 @@ in
       profilingLibraries gccCross withGd gd libpng;
 
     builder = ./builder.sh;
+    outputs = [ "out" "include" ];
 
     # When building glibc from bootstrap-tools, we need libgcc_s at RPATH for
     # any program we run, because the gcc will have been placed at a new
@@ -37,6 +38,10 @@ in
           mkdir -p $out/lib
           ln -s ${stdenv.gcc.gcc}/lib/libgcc_s.so.1 $out/lib/libgcc_s.so.1
       fi
+    '';
+    
+    postInstall = ''
+      mv $out/include $include/
     '';
 
     meta.description = "The GNU C Library";
