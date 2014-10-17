@@ -17,7 +17,7 @@ stdenv.mkDerivation (rec {
   };
   outputs = [ "out" "config" ];
 
-  buildInputs = stdenv.lib.optional pythonSupport python glibc.include
+  buildInputs = stdenv.lib.optional pythonSupport python
     # Libxml2 has an optional dependency on liblzma.  However, on impure
     # platforms, it may end up using that from /usr/lib, and thus lack a
     # RUNPATH for that, leading to undefined references for its users.

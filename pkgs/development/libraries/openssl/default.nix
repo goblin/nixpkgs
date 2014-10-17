@@ -48,7 +48,7 @@ stdenv.mkDerivation {
 
   patches = patchesCross false;
 
-  buildInputs = stdenv.lib.optional withCryptodev cryptodevHeaders glibc.include;
+  buildInputs = stdenv.lib.optional withCryptodev cryptodevHeaders;
   outputs = [ "out" "misc" ];
   setOutputConfigureFlags = false;
 

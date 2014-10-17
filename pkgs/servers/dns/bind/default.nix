@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
     sed -i 's/^\t.*run/\t/' Makefile.in
   '';
 
-  buildInputs = [ openssl.all libtool perl libxml2.all glibc.include ];
+  buildInputs = [ openssl.all libtool perl libxml2.all ];
 
   outputs = [ "out" "config" ];
 

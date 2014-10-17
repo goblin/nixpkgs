@@ -13,7 +13,6 @@ stdenv.mkDerivation rec {
     sha256 = "039agw5rqvqny92cpkrfn243x2gd4xn13hs3xi6isk55d2vqqr9n";
   };
 
-  buildInputs = glibc.include;
   configureFlags = if static then "" else "--shared";
 
   preConfigure = ''
