@@ -15,7 +15,9 @@ stdenv.mkDerivation rec {
     sed -i 's/^\t.*run/\t/' Makefile.in
   '';
 
-  buildInputs = [ openssl libtool perl libxml2 ];
+  buildInputs = [ openssl.all libtool perl libxml2.all ];
+
+  outputs = [ "out" "config" ];
 
   configureFlags = [
     "--localstatedir=/var"
@@ -32,6 +34,11 @@ stdenv.mkDerivation rec {
     "--without-purify"
     "--without-python"
   ];
+
+  postInstall = ''
+    mkdir -p $config/bin
+    mv $out/bin/bind9-config $out/bin/isc-config.sh $config/bin/
+  '';
 
   meta = {
     homepage = "http://www.isc.org/software/bind";
