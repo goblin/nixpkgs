@@ -40,11 +40,6 @@ in
       fi
     '';
     
-    postInstall = ''
-      mkdir $include
-      mv $out/include $include/
-    '';
-
     meta.description = "The GNU C Library";
   }
 

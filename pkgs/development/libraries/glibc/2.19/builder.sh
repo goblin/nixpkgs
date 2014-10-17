@@ -52,6 +52,9 @@ postInstall() {
 
     # Get rid of more unnecessary stuff.
     rm -rf $out/var $out/sbin/sln
+      
+    mkdir $include
+    mv $out/include $include/
 }
 
 genericBuild
