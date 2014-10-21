@@ -1,4 +1,4 @@
-{ fetchurl, stdenv, gmp, isl }:
+{ fetchurl, stdenv, gmp, isl, glibc }:
 
 stdenv.mkDerivation rec {
   name = "cloog-0.18.0";
@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
     sha256 = "1c4aa8dde7886be9cbe0f9069c334843b21028f61d344a2d685f88cb1dcf2228";
   };
 
-  buildInputs = [ gmp ];
+  buildInputs = [ gmp ] ++ glibc.all;
 
   propagatedBuildInputs = [ isl ];
 
