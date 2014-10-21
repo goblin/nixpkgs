@@ -355,7 +355,7 @@ stdenv.mkDerivation ({
       )
     }
     ${if (stdenv ? glibc && cross == null)
-      then " --with-native-system-header-dir=${stdenv.glibc}/include"
+      then " --with-native-system-header-dir=${stdenv.glibc.include}/include"
       else ""}
     ${if langAda then " --enable-libada" else ""}
     ${if cross == null && stdenv.isi686 then "--with-arch=i686" else ""}
