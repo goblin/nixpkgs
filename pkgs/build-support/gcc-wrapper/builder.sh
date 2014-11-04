@@ -24,7 +24,7 @@ if test -z "$nativeLibc"; then
     # compile, because it uses "#include_next <limits.h>" to find the
     # limits.h file in ../includes-fixed. To remedy the problem,
     # another -idirafter is necessary to add that directory again.
-    echo "-B$libc/lib/ -idirafter $libc/include -idirafter $gcc/lib/gcc/*/*/include-fixed" > $out/nix-support/libc-cflags
+    echo "-B$libc/lib/ -idirafter $libc_include/include -idirafter $gcc/lib/gcc/*/*/include-fixed" > $out/nix-support/libc-cflags
 
     echo "-L$libc/lib" > $out/nix-support/libc-ldflags
 
@@ -95,6 +95,7 @@ doSubstitute() {
         -e "s^@binutils@^$binutils^g" \
         -e "s^@coreutils@^$coreutils^g" \
         -e "s^@libc@^$libc^g" \
+        -e "s^@libc_include@^$libc_include^g" \
         -e "s^@ld@^$ld^g" \
         < "$src" > "$dst" 
 }
@@ -210,5 +211,5 @@ cp -p $utils $out/nix-support/utils.sh
 # tools like gcov, the manpages, etc. as well (including for binutils
 # and Glibc).
 if test -z "$nativeTools"; then
-    echo $gcc $binutils $libc > $out/nix-support/propagated-user-env-packages
+    echo $gcc $binutils $libc $libc_include> $out/nix-support/propagated-user-env-packages
 fi

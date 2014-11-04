@@ -42,6 +42,7 @@ stdenv.mkDerivation {
 
   inherit nativeTools nativeLibc nativePrefix gcc;
   libc = if nativeLibc then null else libc;
+  libc_include = libc.include;
   binutils = if nativeTools then null else binutils;
   # The wrapper scripts use 'cat', so we may need coreutils
   coreutils = if nativeTools then null else coreutils;
