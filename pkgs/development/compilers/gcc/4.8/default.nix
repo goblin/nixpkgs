@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, noSysDirs, glibc
+{ stdenv, fetchurl, noSysDirs
 , langC ? true, langCC ? true, langFortran ? false
 , langObjC ? stdenv.isDarwin
 , langObjCpp ? stdenv.isDarwin
@@ -275,7 +275,7 @@ stdenv.mkDerivation ({
     ++ (optional (perl != null) perl)
     ++ (optional javaAwtGtk pkgconfig);
 
-  buildInputs = [ gmp mpfr mpc libelf ] ++ glibc.all
+  buildInputs = [ gmp mpfr mpc libelf ]
     ++ (optional (cloog != null) cloog)
     ++ (optional (isl != null) isl)
     ++ (optional (zlib != null) zlib)

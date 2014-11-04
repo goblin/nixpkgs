@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, glibc }:
+{ stdenv, fetchurl }:
 
 stdenv.mkDerivation {
   name = "which-2.20";
@@ -11,6 +11,4 @@ stdenv.mkDerivation {
   meta = {
     homepage = http://ftp.gnu.org/gnu/which/;
   };
-
-  buildInputs = glibc.all;
 }

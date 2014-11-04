@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, glibc }:
+{ stdenv, fetchurl }:
 
 stdenv.mkDerivation rec {
   name = "xz-5.0.5";
@@ -12,8 +12,6 @@ stdenv.mkDerivation rec {
 
   # In stdenv-linux, prevent a dependency on bootstrap-tools.
   preHook = "unset CONFIG_SHELL";
-
-  buildInputs = glibc.all;
 
   meta = {
     homepage = http://tukaani.org/xz/;

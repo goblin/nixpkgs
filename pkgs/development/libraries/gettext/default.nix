@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, libiconv, xz, glibc }:
+{ stdenv, fetchurl, libiconv, xz }:
 
 stdenv.mkDerivation (rec {
   name = "gettext-0.18.2";
@@ -30,7 +30,7 @@ stdenv.mkDerivation (rec {
     fi
   '';
 
-  buildInputs = [ xz ] ++ glibc.all ++ stdenv.lib.optional (!stdenv.isLinux) libiconv;
+  buildInputs = [ xz ] ++ stdenv.lib.optional (!stdenv.isLinux) libiconv;
 
   enableParallelBuilding = true;
 

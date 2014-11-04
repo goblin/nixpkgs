@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, glibc, readline ? null, interactive ? false, texinfo ? null, bison }:
+{ stdenv, fetchurl, readline ? null, interactive ? false, texinfo ? null, bison }:
 
 assert interactive -> readline != null;
 
@@ -14,7 +14,6 @@ stdenv.mkDerivation rec {
     url = "mirror://gnu/bash/${realName}.tar.gz";
     sha256 = "a27a1179ec9c0830c65c6aa5d7dab60f7ce1a2a608618570f96bfa72e95ab3d8";
   };
-  buildInputs = glibc.all;
 
   NIX_CFLAGS_COMPILE = ''
     -DSYS_BASHRC="/etc/bashrc"

@@ -1,4 +1,4 @@
-{ fetchurl, stdenv, gmp, mpfr, glibc }:
+{ fetchurl, stdenv, gmp, mpfr }:
 
 stdenv.mkDerivation rec {
   name = "mpc-1.0.1";
@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
     sha1 = "vxg0rkyn4cs40wr2cp6bbcyr1nnijzlc";
   };
 
-  buildInputs = [ gmp mpfr ] ++ glibc.all;
+  buildInputs = [ gmp mpfr ];
 
   doCheck = true;
 

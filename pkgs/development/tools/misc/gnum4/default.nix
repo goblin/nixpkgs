@@ -1,4 +1,4 @@
-{stdenv, fetchurl, glibc}:
+{stdenv, fetchurl}:
 
 stdenv.mkDerivation rec {
   name = "gnum4-1.4.17";
@@ -14,8 +14,6 @@ stdenv.mkDerivation rec {
 
   # Upstream is aware of it; it may be in the next release.
   patches = [ ./s_isdir.patch ];
-
-  buildInputs = glibc.all;
 
   meta = {
     homepage = http://www.gnu.org/software/m4/;

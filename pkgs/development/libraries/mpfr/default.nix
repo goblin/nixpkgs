@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, glibc, gmp }:
+{ stdenv, fetchurl, gmp }:
 
 stdenv.mkDerivation rec {
   name = "mpfr-3.1.2";
@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
     sha256 = "0sqvpfkzamxdr87anzakf9dhkfh15lfmm5bsqajk02h1mxh3zivr";
   };
 
-  buildInputs = [ gmp ] ++ glibc.all;
+  buildInputs = [ gmp ];
 
   configureFlags =
     /* Work around a FreeBSD bug that otherwise leads to segfaults in the test suite:
