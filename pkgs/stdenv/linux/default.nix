@@ -130,10 +130,11 @@ rec {
       # stage1.
       glibc = stage0.stdenv.mkDerivation {
         name = "bootstrap-glibc";
+	outputs = [ "out" "include" ];
         buildCommand = ''
-          mkdir -p $out
+          mkdir -p $out $include
           ln -s ${bootstrapTools}/lib $out/lib
-          ln -s ${bootstrapTools}/include-glibc $out/include
+          ln -s ${bootstrapTools}/include-glibc $include/include
         '';
       };
     };
